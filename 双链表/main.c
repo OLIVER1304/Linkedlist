@@ -1,17 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "hfile.cpp"
-
+#define SIZE 10
 
 int main() {
 	LNode* L = initlist();
-	int a;
-	printf("请输入int类型数据(输入负数,结束输入):");
-	while(1){
-        scanf("%d", &a);
-        if(a<0){
-           break;
+	int chk_data(char *num);
+	char str[SIZE];
+	printf("请输入数据(输入0,结束输入):");
+	while(1) {
+		scanf("%s", &str);
+		if (chk_data(str) == 0) {
+			printf("输入数据错误，请重新输入！\n");
+			continue;
 		}
+		if(atoi(str)==0) {
+			break;
+		}
+		int a=atoi(str);
 		InsertAttail(L, a);
 	}
 	printf("\n");
@@ -32,19 +38,41 @@ int main() {
 				break;
 			}
 			case 2: {
-				int j;
-				printf("请输入数据：");
-				scanf("%d", &j);
-				InsertAthead(L, j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据(输入0,结束输入):");
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入！\n");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int j=atoi(str);
+					InsertAthead(L, j);
+				}
 				printf("\n");
 				print(L);
 				break;
 			}
 			case 3: {
-				int j;
-				printf("请输入数据：");
-				scanf("%d", &j);
-				InsertAttail(L, j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据(输入0,结束输入):");
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入！\n");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int j=atoi(str);
+					InsertAttail(L, j);
+				}
 				printf("\n");
 				print(L);
 				break;
@@ -69,8 +97,18 @@ int main() {
 				printf("请输入索引：");
 				scanf("%d", &h);
 				printf("请输入数据：");
-				scanf("%d", &j);
-				InsertAti(L, h, j);
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入！\n");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int j=atoi(str);
+					InsertAti(L, h, j);
+				}
 				printf("\n");
 				print(L);
 				break;
@@ -85,9 +123,15 @@ int main() {
 				break;
 			}
 			case 8: {
-				int j;
-				printf("请输入内容：");
-				scanf("%d", &j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据:");
+				scanf("%s", &str);
+				if (chk_data(str) == 0) {
+					printf("\n输入数据错误，请重新输入!\n");
+					break;
+				}
+				int j=atoi(str);
 				SearchList(L, j);
 				printf("\n");
 				print(L);

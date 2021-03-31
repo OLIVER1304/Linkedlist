@@ -1,16 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "hfile.cpp" 
+#include "hfile.cpp"
+#define SIZE 10
 
 int main() {
 	LNode* L = initlist();
-	int a;
-	printf("请输入int类型数据(输入负数,结束输入):");
-	while(1){
-        scanf("%d", &a);
-        if(a<0){
-           break;
+	int chk_data(char *num);
+	char str[SIZE];
+	printf("请输入数据(输入0,结束输入):");
+	while(1) {
+		scanf("%s", &str);
+		if (chk_data(str) == 0) {
+			printf("输入数据错误，请重新输入！\n");
+			continue;
 		}
+		if(atoi(str)==0) {
+			break;
+		}
+		int a=atoi(str);
 		InsertAttail(L, a);
 	}
 	printf("\n");
@@ -34,19 +41,41 @@ int main() {
 				break;
 			}
 			case 2: {
-				int j;
-				printf("请输入数据：");
-				scanf("%d", &j);
-				InsertAthead(L, j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据(输入0,结束输入):");
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入!");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int j=atoi(str);
+					InsertAthead(L, j);
+				}
 				printf("\n");
 				print(L);
 				break;
 			}
 			case 3: {
-				int j;
-				printf("请输入数据：");
-				scanf("%d", &j);
-				InsertAttail(L, j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据(输入0,结束输入):");
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入!");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int j=atoi(str);
+					InsertAttail(L, j);
+				}
 				printf("\n");
 				print(L);
 				break;
@@ -70,9 +99,21 @@ int main() {
 				int j,h;
 				printf("请输入i：");
 				scanf("%d", &j);
-				printf("请输入数据：");
-				scanf("%d", &h);
-				InsertAti(L, j, h);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据(输入0,结束输入):");
+				while(1) {
+					scanf("%s", &str);
+					if (chk_data(str) == 0) {
+						printf("输入数据错误，请重新输入!");
+						continue;
+					}
+					if(atoi(str)==0) {
+						break;
+					}
+					int h=atoi(str);
+					InsertAti(L, j, h);
+				}
 				printf("\n");
 				print(L);
 				break;
@@ -87,9 +128,15 @@ int main() {
 				break;
 			}
 			case 8: {
-				int j;
-				printf("请输入内容：");
-				scanf("%d", &j);
+				int chk_data(char *num);
+				char str[SIZE];
+				printf("请输入数据:");
+				scanf("%s", &str);
+				if (chk_data(str) == 0) {
+					printf("输入数据错误，请重新输入!");
+					break;
+				}
+				int j=atoi(str);
 				SearchList(L, j);
 				printf("\n");
 				print(L);
@@ -113,23 +160,17 @@ int main() {
 				break;
 			}
 			case 12: {
-			    FindMidNode(L); 
+				FindMidNode(L);
 				printf("\n");
 				print(L);
 				break;
 			}
 			case 13: {
-			   int x=IsLoopList (L);
-			   if(x=1){
-			   	printf("链表成环\n");
-			   } else if(x=0){
-			    printf("链表没有成环\n");
-			   } 
+				IsLoopList (L);
 				printf("\n");
 				print(L);
 				break;
 			}
 		}
 	}
-
 }

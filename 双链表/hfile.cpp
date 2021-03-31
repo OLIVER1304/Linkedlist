@@ -3,7 +3,6 @@
 #include "hfile.h"
 
 
-
 //初始化链表
 LNode* initlist() {
 	LNode* L = (LNode*)malloc(sizeof(LNode));
@@ -11,6 +10,22 @@ LNode* initlist() {
 	L->next = NULL;
 	L->pre = NULL;
 	return L;
+}
+
+//检查输入的数据类型和长度是否正确
+int chk_data(char *num) {
+	int i;
+	for (i = 0; num[i]; i++) { 
+		if (num[i] > '9' || num[i] < '0') { 
+			printf("\n传入值含有非数值\n");
+			return 0;
+		}
+	}
+	if (i > 10) { 
+		printf("\n超出了数字长度\n");
+		return 0;
+	}
+	return 1;
 }
 
 //头部插入
@@ -124,14 +139,19 @@ Status linkedListget(LNode* L, int index) {
 
 //根据内容查找元素索引
 Status SearchList(LNode* L, ElemType e) {
-	if(L->next==NULL) {
+	if(L->next==NULL||L==NULL) {
+		printf("\n链表为空\n");
 		return ERROR;
 	}
 	LNode*node=L->next;
 	int i=1;
-	while(node->data!=e&&node!=NULL) {
+	while(node->data!=e) {
 		node = node->next;
 		i++;
+		if(node==NULL) {
+			printf("\n没有所查找的内容\n");
+			return ERROR;
+		}
 	}
 	printf("元素的内容：%d  其索引为：%d\n",node->data,i);
 	return SUCCESS;
@@ -140,19 +160,23 @@ Status SearchList(LNode* L, ElemType e) {
 //反转链表
 Status ReverseList(LNode* L) {
 	if(L==0||L->next==0) {
+		printf("\n链表为空\n");
 		return ERROR;
 	}
-	LNode*p,*q,*r;  
+	if(L->next->next==NULL) {
+		return ERROR;
+	}
+	LNode*p,*q,*r;
 	p=L->next;
 	L->next=NULL;
 	q=NULL;
 	r=NULL;
 	while(p) {
-		if(r==NULL){
-		q=p->next;
-		p->next=r;
-		r=p;
-		p=q;
+		if(r==NULL) {
+			q=p->next;
+			p->next=r;
+			r=p;
+			p=q;
 		}
 		q=p->next;
 		p->next=r;
@@ -201,6 +225,9 @@ void DestroyList(LNode* L) {
 		L = L->next;
 		free(p);
 	}
+	L==NULL;
+	printf("\n链表销毁成功\n");
+	printf("\n请进行[1]操作重新初始化链表");
 }
 
 //遍历打印链表

@@ -17,6 +17,9 @@ typedef enum Status {
 //初始化链表
 LNode* initlist() ;
 
+//检查输入的数据类型和长度是否正确 
+int chk_data(char *num);
+
 //头部插入
 Status InsertAthead(LNode* L, int data) ;
 
@@ -48,7 +51,7 @@ Status ReverseList(LNode* L);
 void FindMidNode(LNode* L); 
 
 //判断链表是否成环
-int  IsLoopList (LNode* L);
+void  IsLoopList (LNode* L);
 
 //清空链表
 void ClearlinkedList(LNode* L) ;

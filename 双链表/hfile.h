@@ -15,8 +15,11 @@ typedef enum Status {
 	SUCCESS
 } Status;
 
-//初始化链表
+//初始化链表 
 LNode* initlist();
+
+//检查输入的数据类型和长度是否正确
+int chk_data(char *num); 
 
 //头部插入
 Status InsertAthead(LNode* L, int data);
